@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 html {
     box-sizing: border-box;
     height: 100%;
@@ -56,6 +57,43 @@ button {
     cursor: pointer;
 }
 
-.imageWeather {
+.weatherBox {
+    text-align: center;
 }
 
+.weatherBox img {
+    width: 60%;
+    margin-top: 10px;
+}
+
+.weatherBox .temperature {
+    position: relative;
+    font-size: 60px;
+    font-weight: 200;
+    margin: auto;
+    padding: 0;
+}
+
+.weatherBox .description {
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin: auto;
+    padding: 0;
+}
+
+.weatherDetails {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weatherDetails .humidity {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.weatherDetails .wind {
+    margin-left: auto;
+    margin-right:auto;
+}
