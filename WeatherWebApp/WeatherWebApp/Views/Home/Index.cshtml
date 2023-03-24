@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WeatherWebApp.Models.WeatherInformation
+
+@{
     ViewData["Title"] = "Weather Web App";
 }
 
@@ -7,28 +9,48 @@
     <div class="mainWindow">
 
         <div class="inputCity">
-            <form>
-                <input type="text" placeholder="Enter Your Location">
+            <form method="post" asp-controller="Home" asp-action="Search">
+                <input type="text" id="cityName" name="cityName" placeholder="Enter Your Location">
                 <button type="submit" id="SearchButton" OnClick="SearchButton_Click">🔍</button>
             </form>
         </div>
+        @if (Model != null) {
+            <div class="weatherBox">
+                <img src="@Model.icon">
+                <p class="temperature">@Model.temp °C</p>
+                <p class="description">@Model.description</p>
+            </div>
 
-        <div class="weatherBox">
-            <img src="https://img.icons8.com/color/256/partly-cloudy-rain.png">
-            <p class="temperature">26 ℃</p>
-            <p class="description">Clouds</p>
-        </div>
+            <div class="weatherDetails">
+                <div class="humidity">
+                    <span></span>
+                    @Model.humidity %
+                </div>
+                <div class="wind">
+                    <span></span>
+                    @Model.speed m/s
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="weatherBox">
+                <img src="https://img.icons8.com/color/256/partly-cloudy-rain.png">
+                <p class="temperature">20°C</p>
+                <p class="description">Clouds</p>
+            </div>
 
-        <div class="weatherDetails">
-            <div class="humidity">
+            <div class="weatherDetails">
+                <div class="humidity">
                 <span></span>
-                Humidity
+                Humidity %
             </div>
             <div class="wind">
                 <span></span>
-                Wind Speed
+                Wind Speed m/s
             </div>
         </div>
+        }
 
     </div>
 </body>
