@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WeatherWebApp.Models;
+using static WeatherWebApp.Models.WeatherInformation;
 
 namespace WeatherWebApp.Controllers
 {
@@ -16,6 +17,23 @@ namespace WeatherWebApp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string cityName)
+        {
+            if (cityName != null) {
+                _logger.LogInformation($"Search sucsses, name of the city: {cityName}");
+                WeatherInformation weatherInformation = new WeatherInformation();
+                await weatherInformation.Weather(cityName);
+                _logger.LogInformation($"{weatherInformation.Url(cityName)}");
+                Console.WriteLine($"{weatherInformation.icon}");
+                return View("Index", weatherInformation);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
 
         public IActionResult Privacy()
