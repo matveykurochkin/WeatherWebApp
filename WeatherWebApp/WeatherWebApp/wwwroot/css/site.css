@@ -14,7 +14,23 @@ body {
     margin: 0;
     padding: 0;
     height: inherit;
-    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    background: linear-gradient(-45deg, #cc95c0, #dbd4b4, #7aa1d2 );
+    background-size: 250% 250%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .mainWindow {
@@ -85,6 +101,7 @@ button {
 .weatherDetails {
     margin-top: 70px;
     display: flex;
+    font-weight: 200;
     justify-content: space-between;
 }
 
