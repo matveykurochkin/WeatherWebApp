@@ -22,7 +22,7 @@ namespace WeatherWebApp.Models
 
             var weather = await client.GetFromJsonAsync<Root>(url);
 
-            if (weather != null)
+            if (weather != null && weather.cod != 404)
             {
                 temp = Math.Round(weather.main.temp);
                 speed = weather.wind.speed;
