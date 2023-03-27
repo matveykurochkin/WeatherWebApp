@@ -25,18 +25,21 @@ namespace WeatherWebApp.Controllers
             {
                 if (cityName != null)
                 {
-                    _logger.LogInformation($"Search sucsses, name of the city: {cityName}");
                     WeatherInformation weatherInformation = new WeatherInformation();
                     await weatherInformation.Weather(cityName);
-                    _logger.LogInformation($"{weatherInformation.Url(cityName)}");
-                    Console.WriteLine($"{weatherInformation.icon}");
+                    _logger.LogInformation($"Search sucsses, name of the city: {cityName}\n" +
+                    $"\ttemp: {weatherInformation.temp}\n" +
+                    $"\tdescription: {weatherInformation.description}\n" +
+                    $"\ticon: {weatherInformation.icon}\n" +
+                    $"\thumidity: {weatherInformation.humidity}\n" +
+                    $"\twind speed: {weatherInformation.speed}\n" +
+                    $"\tyour URL: {weatherInformation.Url(cityName)}");
                     return View("Index", weatherInformation);
                 }
                 else
-                {
                     return View("Index");
-                }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 _logger.LogInformation($"Error message: {ex.Message}");
                 return View("Index");
