@@ -7,19 +7,25 @@
 <html>
 <body>
 
-    <div class="mainWindow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        <div class="inputCity">
-            <form method="post" asp-controller="Home" asp-action="Search">
-                <input type="text" id="cityName" name="cityName" placeholder="Enter Your Location">
-                <button type="submit" id="SearchButton" OnClick="SearchButton_Click">
-                    <img src="https://img.icons8.com/stickers/256/search.png" width="30" height="30" />
+
+    @if (Model != null)
+    {
+        <div class="mainWindow">
+            <div class="inputCity">
+                <form method="post" asp-controller="Home" asp-action="Search">
+                    <input type="text" id="cityName" name="cityName" placeholder="Enter Your Location">
+                    <button type="submit" id="SearchButton" OnClick="SearchButton_Click">
+                        <img src="https://img.icons8.com/stickers/256/search.png" width="30" height="30" />
                     </button>
-            </form>
-        </div>
-        @if (Model != null)
-        {
+                </form>
+            </div>
+
             <div class="weatherBox">
+                <div class="location">Your Location: @Model.city</div>
                 <img src="@Model.icon">
                 <p class="temperature">@Model.temp °C</p>
                 <p class="description">@Model.description</p>
@@ -28,39 +34,35 @@
             <div class="weatherDetails">
                 <div class="humidity">
                     <span></span>
-                    <img src="https://img.icons8.com/color/256/moisture.png" width="30" height="30" />
-                    Humidity @Model.humidity %
+                    <img src="https://img.icons8.com/color/256/moisture.png" width="45" height="45" />
+                    <div class="wrapper">
+                        <div class="valueDetails">@Model.humidity %</div>
+                        <div>Humidity</div>
+                    </div>
                 </div>
                 <div class="wind">
                     <span></span>
-                    <img src="https://img.icons8.com/color/256/wind.png" width="30" height="30" />
-                    Wind Speed @Model.speed m/s
+                    <img src="https://img.icons8.com/color/256/wind.png" width="45" height="45" />
+                    <div class="wrapper">
+                        <div class="valueDetails">@Model.speed m/s</div>
+                        <div>Wind Speed</div>
+                    </div>
                 </div>
             </div>
-        }
-        else
-        {
-            <div class="weatherBox">
-                <img src="https://img.icons8.com/color/256/partly-cloudy-rain.png">
-                <p class="temperature">20°C</p>
-                <p class="description">Clouds</p>
+        </div>
+    }
+    else
+    {
+        <div class="startWindow">
+            <div class="inputCity">
+                <form method="post" asp-controller="Home" asp-action="Search">
+                    <input type="text" id="cityName" name="cityName" placeholder="Enter Your Location">
+                    <button type="submit" id="SearchButton" OnClick="SearchButton_Click">
+                        <img src="https://img.icons8.com/stickers/256/search.png" width="30" height="30" />
+                    </button>
+                </form>
             </div>
-
-            <div class="weatherDetails">
-                <div class="humidity">
-                    <span></span>
-                    <img src="https://img.icons8.com/color/256/moisture.png" width="30" height="30" />
-                    Humidity %
-                </div>
-                <div class="wind">
-                    <span></span>
-                    <img src="https://img.icons8.com/color/256/wind.png" width="30" height="30" />
-                    Wind Speed m/s
-                </div>
-            </div>
-        }
-
-    </div>
-
+        </div>
+    }
 </body>
 </html>
