@@ -17,3 +17,9 @@
 Для запуска приложения необходимо выполнить следующее действие:
 
 * В файле `appsettings.json` в поле `tokenWeather` ввести токен, полученный на сайте [API OpenWeatherMap](https://openweathermap.org/).
+
+## Главная страница сайта
+<div align="center">
+<image src=".\Images\Main Window Image.PNG">
+<image src=".\Images\Weather Response.PNG">
+</div>
